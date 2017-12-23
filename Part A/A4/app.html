@@ -5,8 +5,8 @@
     <body>
         <h1>Grades</h1>
         <form>
-            Subject 1: <input type = "number" name = "n1" id = "n1"><br>
-            Subject 2: <input type = "number" name = "n2" id = "n2"><br>
+            Subject 1: <input type = "number" name = "n1" id = "n1" onchange="return calculate()"><br>
+            Subject 2: <input type = "number" name = "n2" id = "n2" onchange="return calculate()"><br>
             <input type = "submit" value ="Calc" onclick="return calculate()">
         </form>
         <p id = "g1"></p>
