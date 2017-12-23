@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>Bakery</title>
+        <script>
+            function validate()
+            {
+                var q = document.getElementById("quantity").value;
+                if (q == "")
+                {
+                    alert ('Enter Quantity');
+                    return 0;
+                }
+                if (parseInt(q) < 0)
+                {
+                    alert ('Invalid Quantity');
+                    return 0;
+                }
+                return parseInt(q);
+            }
+
+            function calc()
+            {
+                var q = validate();
+                if(q != 0)
+                {
+                    if (document.getElementById("cookie").checked)
+                    document.getElementById("t").innerHTML = "Total price is "+ q*50;
+                    else if (document.getElementById("bread").checked)
+                    document.getElementById("t").innerHTML = "Total price is "+ q*30;
+                    else
+                    alert("Check somthing");
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Bakery</h1><br>
+        <form id = "fr">
+
+            <label for ="cookie">
+                <img src = "cookie.png" width="100px" height="100px"/>
+            </label>
+            Cookie: Rs 50<input type = "radio" value = "cookie" name = "item" id = "cookie"><br>
+
+            <label for ="bread">
+                    <img src = "bread.png" width="100px" height="100px"/>
+            </label>
+            Bread: Rs 30<input type = "radio" value = "bread" name = "item" id = "bread"><br>
+
+            <br><br>
+            Quantity <input type = "number" value = "quantity" name = "quantity" id = "quantity" onchange="return calc()"> 
+
+        </form>
+
+        <p id = "t"></p>
+    </body>
+</html>
