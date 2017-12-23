@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title>Grades</title>
+    </head>
+    <body>
+        <h1>Grades</h1>
+        <form>
+            Subject 1: <input type = "number" name = "n1" id = "n1"><br>
+            Subject 2: <input type = "number" name = "n2" id = "n2"><br>
+            <input type = "button" value ="Calc" onclick="return calculate()">
+        </form>
+        <p id = "g1"></p>
+        <p id = "g2"></p>
+        <p id = "t"></p>
+
+        <script>
+            function validate()
+            {
+                var n1 = document.getElementById("n1").value;
+                var n2 = document.getElementById("n2").value;
+                if (n1 == ""||n2 == "")
+                {
+                    alert('Enter numbers'); 
+                    return 0;
+                }
+                n1 = parseInt(n1);
+                n2 = parseInt(n2);
+                if (n1 < 0 || n2 < 0)
+                {
+                    alert('Numbers are not +ve'); 
+                    return 0;
+                }
+
+                if (n1 > 100 || n2 > 100)
+                {
+                    alert('More than 100 not possible'); 
+                    return 0;
+                }
+                return 1;
+
+            }
+
+            function calculate()
+            {
+                if (validate() == 1)
+                {
+                    var n1 = parseInt(document.getElementById('n1').value);
+                    var n2 = parseInt(document.getElementById('n2').value);
+                    var n3 = n1+n2;
+                    document.getElementById('g1').innerHTML = "Grade Sub 1: "+grade(n1);
+                    document.getElementById('g2').innerHTML = "Grade Sub 2: "+grade(n2);
+                    document.getElementById('t').innerHTML = "Total marks: "+n3+" / 200";
+
+                }
+            }
+
+            function grade(mark)
+            {
+                if (mark > 90) return "S";
+                if (mark > 80) return "A";
+                if (mark > 70) return "B";
+                if (mark > 60) return "C";
+                if (mark > 50) return "D";
+                if (mark > 40) return "E";
+                return "F";
+            }
+
+            // var marks1 = document.getElementById('n1');
+            // var marks2 = document.getElementById('n2');
+
+            // // Listen for keystroke events
+            // marks1.onkeydown = function (e) {
+            //     document.getElementById("ans").innerHTML = marks1.value;
+            // };
+
+            // marks2.onkeydown = function (e) {
+            //     document.getElementById("ans").innerHTML = marks2.value;
+            // };
+        </script>
+    </body>
+</html>
