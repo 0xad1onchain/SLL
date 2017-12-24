@@ -27,7 +27,6 @@ window.onload = function() {
     //Generate HTML for Menu Bar
     teslaModels.forEach(function(item,index){
         listElemet = document.createElement("th")
-        listElemet.id = item.model
         listElemet.onmouseover = function ()
         {
             document.getElementById("name").innerHTML = teslaModels[index].name;
