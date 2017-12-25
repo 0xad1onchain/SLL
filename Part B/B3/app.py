@@ -10,7 +10,6 @@ for i in s:
 	else:
 		dict[i] = 1
 ls = sorted(dict.items(),key=lambda t:t[1],reverse=True)
-# print(ls)
 ls = ls[:11]
 print (ls)
 lst = []

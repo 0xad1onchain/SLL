@@ -9,7 +9,7 @@ print(df1.dtypes) #Print Datatypes
 print('Max Age', df1['Age'].max())
 print('Min Age', df1['Age'].min())
 print('Mean Age', df1['Age'].mean())
-ax = df1['Age'].plot.hist()
+ax = df1.plot()
 ax.set_xlabel('Age')
 ax.set_ylabel('Number of People')
 plt.show(block=True)
