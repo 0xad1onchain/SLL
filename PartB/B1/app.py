@@ -1,38 +1,34 @@
-def FtoC(F):
-	C = (5.0/9.0)*(F-32)
-	return C
+def c_f(t):
+    return t*9/5+32
+def f_c(t):
+    return (t-32)*5/9
 
-def CtoF(C):
-	F = (9.0/5.0)*C + 32
-	return F
-
-def choice():
-	print ("1. Fahrenheit to celcius.")
-	print ("2. Celcius to Fahrenheit.")
-	print ("3. View Stored Tuples.")
-
-def main():
-	FtoC_list= []
-	CtoF_list = []
-
-	again = True
-	while(again):
-		choice = int(input("Enter a choice."))
-		if choice == 1:
-			F = float(input("Temperature in Fahrenheit?\n"))
-			C = FtoC(F)
-			print ("Temperature in Celcius: ", C)
-			FtoC_list.append((F,C))
-
-		if choice == 2:
-			C = float(input("Temperature in Celcius?\n"))
-			F = CtoF(C)
-			print ("Temperature in Fahrenheit: ", F)
-			CtoF_list.append((C,F))
-
-		elif choice == 3:
-			print ("Fahrenheit to Celcius conversions: ", sorted(FtoC_list, key=lambda x: x[0]))
-			print ("Celcius to Fahrenheit conversions: ", sorted(CtoF_list, key=lambda x: x[0]))
-			
-choice()
-main()
+cf=[]
+fc=[]
+fl = True
+while(fl):
+    ch = int(input('Enter 1. C to F   2. F to C   3. View   4.Exit'))
+    if ch == 4:
+        fl = 0
+    elif ch == 1 or ch == 2:
+        t = float(input('Enter the temperature'))
+        if ch == 1:
+            tn = c_f(t)
+            print (t, "C  -> ",tn, "F")
+            cf.append((t, tn))
+        if ch == 2:
+            tn = f_c(t)
+            print (t, "F  -> ",tn, "C")
+            fc.append((t, tn))
+    elif ch == 3:
+        i = int(input('Enter 1 to sort by input or 2 to sort by output'))
+        if i == 1:
+            print(sorted(cf, key=lambda x:x[0]))
+            print(sorted(fc, key=lambda x:x[0]))
+        elif i == 2:
+            print(sorted(cf, key=lambda x:x[1]))
+            print(sorted(fc, key=lambda x:x[1]))
+        else:
+            print ('Not recognised')
+    else: 
+        print ('Not recognised')
