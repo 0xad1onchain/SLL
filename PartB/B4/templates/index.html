@@ -4,7 +4,10 @@
 		<script>
 			function validate()
 			{
-				
+				/**
+				 * regex verification of USN in JS
+				 *
+				 */
 				var usn = document.getElementById('usn').value;
 				var usn_type = /^1MS[0-9][0-9][A-Z][A-Z][0-9][0-9][0-9]$/
 				if (!usn_type.test(usn))
@@ -27,7 +30,13 @@
 	</head>
 
 	<body>
+		<!--
+		{{}} is a way to print or interpret variables from the server side in client side
+		-->
 		<h3>Enter Student Details</h3>
+		<!---
+		action = {{url_for('server')}} calls a python server() function in app.py after validation from JS
+		-->
 		<form id ="register"  onsubmit="return validate()" action="{{url_for('server')}}" method="POST">
 			USN:  <input type = "text" name = "usn" id="usn" required><br>
 			Name:  <input type = "text" name = "name" id="name" required><br>
@@ -46,7 +55,10 @@
 			<br>
 			<input type="submit" name="Submit" value="Submit"><br><br>
 		</form>
-
+		
+		<!---
+			msg sent by server() function being printed 
+		-->
 		<p>{{msg}}</p>
 
 	</body>

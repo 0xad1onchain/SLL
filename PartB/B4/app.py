@@ -1,12 +1,16 @@
 from flask import Flask, render_template, request
 import datetime
+#constructor of the class Flask demands __name__ of the app
 app = Flask(__name__)
 
+# '/' root route, methods=[] allows both GET and POST methods for request
 @app.route('/', methods=['GET', 'POST'])
 def server():
     if request.method == "GET":
+        #rendering template of index.html and sending msg to the template for interpreting it
         return render_template('index.html', msg="YOLO")
     if request.method == "POST":
+        #request.form is an object that allows you to access arugments in the form according to their name in the form
         date = request.form['dob']
         print(date)
         a=[]
@@ -17,6 +21,7 @@ def server():
         try:
             datetime.datetime(a[2], a[1], a[0])
         except ValueError:
+            #error msg
             return render_template('index.html', msg="Date not correct")
         marks= []
         marks.append(int(request.form['mark1']))
@@ -54,8 +59,6 @@ def server():
 
         return render_template('index.html', msg="GPA: "+gpa+" Submit Successful")
 
-
-
-
+#running the app in port 5000 by default with debug mode ON
 if __name__ == "__main__":
     app.run(debug=True)
